@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/stormpath/express-stormpath-config/issues"
   },
-  "homepage": "https://github.com/stormpath/express-stormpath-config#readme"
+  "homepage": "https://github.com/stormpath/express-stormpath-config#readme",
+  "devDependencies": {
+    "mocha": "^2.3.2"
+  }
 }
