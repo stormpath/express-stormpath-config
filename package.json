@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/stormpath/express-stormpath-config#readme",
   "devDependencies": {
+    "get-function-name": "0.0.1",
     "mocha": "^2.3.2"
+  },
+  "dependencies": {
+    "deep-extend": "^0.4.0"
   }
 }
