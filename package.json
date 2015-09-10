@@ -1,0 +1,26 @@
+{
+  "name": "express-stormpath-config",
+  "version": "0.0.1",
+  "description": "The configuration parser / validator for express-stormpath.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stormpath/express-stormpath-config.git"
+  },
+  "keywords": [
+    "express",
+    "stormpath",
+    "authentication",
+    "security",
+    "configuration"
+  ],
+  "author": "Stormpath, Inc.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stormpath/express-stormpath-config/issues"
+  },
+  "homepage": "https://github.com/stormpath/express-stormpath-config#readme"
+}
