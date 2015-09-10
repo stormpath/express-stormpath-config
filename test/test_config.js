@@ -8,13 +8,13 @@ describe('Config', function() {
   describe('#()', function() {
     it('should accept no input', function() {
       assert.doesNotThrow(function() {
-        var config = new Config();
+        new Config();
       }, Error);
     });
 
     it('should accept json input', function() {
       assert.doesNotThrow(function() {
-        var config = new Config({ hi: 'there' });
+        new Config({ hi: 'there' });
       }, Error);
     });
 
@@ -30,6 +30,14 @@ describe('Config', function() {
       config.yo = 'momma';
       assert.equal(config.hi, 'there');
       assert.equal(config.yo, 'momma');
+    });
+  });
+
+  describe('#validate()', function() {
+    it('should require a callback to be passed', function() {
+      assert.throws(function() {
+        new Config().validate();
+      }, Error);
     });
   });
 });
