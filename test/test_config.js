@@ -21,8 +21,8 @@ describe('Config', function() {
     it('should bind all passed values to itself', function() {
       var config = new Config({ hi: 'there', yo: 'momma', test: { nested: 'stuff' } });
       assert.equal(config.hi, 'there');
-      assert.equal(config.hi, 'momma');
-      assert.equal(config.test, { nested: 'stuff' });
+      assert.equal(config.yo, 'momma');
+      assert.deepEqual(config.test, { nested: 'stuff' });
     });
 
     it('should bind additional properties to itself', function() {
