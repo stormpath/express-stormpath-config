@@ -39,5 +39,29 @@ describe('Config', function() {
         new Config().validate();
       }, Error);
     });
+
+    it('should return an error for an empty config', function(done) {
+      var config = new Config();
+      config.validate(function(err) {
+        assert(err);
+        done();
+      });
+    });
+
+    it('should return an error for any config that does not include an application key', function(done) {
+      var config = new Config({ hi: 'there' });
+      config.validate(function(err) {
+        assert(err);
+        done();
+      });
+    });
+
+    it('should return an error for any config that does not include either application.href, application.name, or application.description', function(done) {
+      var config = new Config({ application: { hi: 'there' } });
+      config.validate(function(err) {
+        assert(err);
+        done();
+      });
+    });
   });
 });
