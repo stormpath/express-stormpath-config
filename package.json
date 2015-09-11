@@ -25,7 +25,6 @@
   "homepage": "https://github.com/stormpath/express-stormpath-config#readme",
   "devDependencies": {
     "get-function-name": "0.0.1",
-    "jsdoc": "^3.3.2",
     "mocha": "^2.3.2"
   },
   "dependencies": {
