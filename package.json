@@ -4,7 +4,8 @@
   "description": "The configuration parser / validator for express-stormpath.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks test",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -24,19 +25,13 @@
   },
   "homepage": "https://github.com/stormpath/express-stormpath-config#readme",
   "devDependencies": {
-    "blanket": "^1.1.7",
     "coveralls": "^2.11.4",
     "get-function-name": "0.0.1",
+    "istanbul": "^0.3.19",
     "mocha": "^2.3.2",
     "mocha-lcov-reporter": "0.0.2"
   },
   "dependencies": {
     "deep-extend": "^0.4.0"
-  },
-  "config": {
-    "blanket": {
-      "data-cover-never": [ "node_modules", "test" ],
-      "pattern": [ "" ]
-    }
   }
 }
