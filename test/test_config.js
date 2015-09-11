@@ -51,7 +51,7 @@ describe('Config', function() {
     });
 
     it('should return an error for any config that does not include an application key', function(done) {
-      var config = new Config({ hi: 'there' });
+      var config = new Config({ client: { apiKey: { file: 'woo' } }, hi: 'there' });
       config.validate(function(err) {
         assert(err);
         done();
@@ -59,7 +59,7 @@ describe('Config', function() {
     });
 
     it('should return an error for any config that does not include either application.href, application.name, or application.description', function(done) {
-      var config = new Config({ application: { hi: 'there' } });
+      var config = new Config({ application: { hi: 'there' }, client: { apiKey: { file: 'woo' } } });
       config.validate(function(err) {
         assert(err);
         done();
@@ -67,11 +67,7 @@ describe('Config', function() {
     });
 
     it('should return no error for any valid config', function(done) {
-      var config = new Config({
-        application: { name: 'test' },
-        client: { apiKey: { file: 'woo' } }
-      });
-
+      var config = new Config({ application: { name: 'test' }, client: { apiKey: { file: 'woo' } } });
       config.validate(function(err) {
         assert.ifError(err);
         done();
@@ -79,7 +75,7 @@ describe('Config', function() {
     });
 
     it('should return an error for any config that does not include a client key', function(done) {
-      var config = new Config({ what: 'up' });
+      var config = new Config({ application: { name: 'woo' }, what: 'up' });
       config.validate(function(err) {
         assert(err);
         done();
