@@ -63,5 +63,13 @@ describe('Config', function() {
         done();
       });
     });
+
+    it('should return no error for any valid config', function(done) {
+      var config = new Config({ application: { name: 'test' } });
+      config.validate(function(err) {
+        assert.ifError(err);
+        done();
+      });
+    });
   });
 });
