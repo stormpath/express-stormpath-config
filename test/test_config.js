@@ -2,6 +2,8 @@
 
 var assert = require('assert');
 
+var async = require('async');
+
 var Config = require('../index');
 
 describe('Config', function() {
@@ -65,9 +67,57 @@ describe('Config', function() {
     });
 
     it('should return no error for any valid config', function(done) {
-      var config = new Config({ application: { name: 'test' } });
+      var config = new Config({
+        application: { name: 'test' },
+        client: { apiKey: { file: 'woo' } }
+      });
+
       config.validate(function(err) {
         assert.ifError(err);
+        done();
+      });
+    });
+
+    it('should return an error for any config that does not include a client key', function(done) {
+      var config = new Config({ what: 'up' });
+      config.validate(function(err) {
+        assert(err);
+        done();
+      });
+    });
+
+    it('should return an error for any config that does not include a client.apiKey key', function(done) {
+      var config = new Config({ client: { what: 'up' } });
+      config.validate(function(err) {
+        assert(err);
+        done();
+      });
+    });
+
+    it('should return an error for any config that does not include either client.apiKey.id + client.apiKey.secret, or client.apiKey.file', function(done) {
+      async.parallel([
+        function(next) {
+          var config = new Config({ application: { name: 'hi' }, client: { apiKey: { id: 'hi' } } });
+          config.validate(function(err) {
+            assert(err);
+            next();
+          });
+        },
+        function(next) {
+          var config = new Config({ application: { name: 'hi' }, client: { apiKey: { id: 'hi', secret: 'woot' } } });
+          config.validate(function(err) {
+            assert.ifError(err);
+            next();
+          });
+        },
+        function(next) {
+          var config = new Config({ application: { name: 'hi' }, client: { apiKey: { file: 'hi' } } });
+          config.validate(function(err) {
+            assert.ifError(err);
+            next();
+          });
+        }
+      ], function() {
         done();
       });
     });
