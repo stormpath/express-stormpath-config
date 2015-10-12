@@ -30,7 +30,7 @@
     "get-function-name": "0.0.1",
     "istanbul": "^0.3.19",
     "mocha": "^2.3.2",
-    "mocha-lcov-reporter": "0.0.2"
+    "mocha-lcov-reporter": "1.0.0"
   },
   "dependencies": {
     "deep-extend": "^0.4.0"
