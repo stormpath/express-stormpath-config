@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/stormpath/express-stormpath-config#readme",
   "devDependencies": {
-    "async": "^1.4.2",
+    "async": "^2.0.1",
     "coveralls": "^2.11.4",
     "get-function-name": "0.0.1",
     "istanbul": "^0.3.19",
